@@ -27,6 +27,9 @@ export const ALLOWED_COMMANDS = new Set<string>([
   "pwd",
   // Node.js development
   "npm",
+  "npx",
+  "pnpm",
+  "pnpx",
   "node",
   // Version control
   "git",
@@ -167,6 +170,8 @@ export function validatePkillCommand(
     "node",
     "npm",
     "npx",
+    "pnpm",
+    "pnpx",
     "vite",
     "next",
   ]);

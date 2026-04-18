@@ -16,27 +16,25 @@ import { resolve, isAbsolute } from "node:path";
 import { runAutonomousAgent } from "./agent.js";
 
 // Configuration
-const DEFAULT_MODEL = "claude-sonnet-4-5-20250929";
+const DEFAULT_MODEL = "claude-sonnet-4-6";
 
 const program = new Command()
   .name("autonomous-coding")
-  .description(
-    "Autonomous Coding Agent Demo - Long-running agent harness"
-  )
+  .description("Autonomous Coding Agent Demo - Long-running agent harness")
   .option(
     "--project-dir <path>",
     "Directory for the project (relative paths placed in generations/)",
-    "./autonomous_demo_project"
+    "./autonomous_demo_project",
   )
   .option(
     "--max-iterations <n>",
     "Maximum number of agent iterations (default: unlimited)",
-    (val: string) => parseInt(val, 10)
+    (val: string) => parseInt(val, 10),
   )
   .option(
     "--model <model>",
     `Claude model to use (default: ${DEFAULT_MODEL})`,
-    DEFAULT_MODEL
+    DEFAULT_MODEL,
   )
   .parse();
 
@@ -47,13 +45,13 @@ const opts = program.opts<{
 }>();
 
 // Check for API key
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error("Error: ANTHROPIC_API_KEY environment variable not set");
-  console.error("\nGet your API key from: https://console.anthropic.com/");
-  console.error("\nThen set it:");
-  console.error("  export ANTHROPIC_API_KEY='your-api-key-here'");
-  process.exit(1);
-}
+// if (!process.env.ANTHROPIC_API_KEY) {
+//   console.error("Error: ANTHROPIC_API_KEY environment variable not set");
+//   console.error("\nGet your API key from: https://console.anthropic.com/");
+//   console.error("\nThen set it:");
+//   console.error("  export ANTHROPIC_API_KEY='your-api-key-here'");
+//   process.exit(1);
+// }
 
 // Automatically place projects in generations/ directory unless already specified
 let projectDir = opts.projectDir;

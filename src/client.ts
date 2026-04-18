@@ -6,7 +6,11 @@
 
 import { writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
-import type { HookCallbackMatcher, PermissionMode, SandboxSettings } from "@anthropic-ai/claude-agent-sdk";
+import type {
+  HookCallbackMatcher,
+  PermissionMode,
+  SandboxSettings,
+} from "@anthropic-ai/claude-agent-sdk";
 import { bashSecurityHook } from "./security.js";
 
 // Puppeteer MCP tools for browser automation
@@ -21,14 +25,7 @@ const PUPPETEER_TOOLS = [
 ];
 
 // Built-in tools
-const BUILTIN_TOOLS = [
-  "Read",
-  "Write",
-  "Edit",
-  "Glob",
-  "Grep",
-  "Bash",
-];
+const BUILTIN_TOOLS = ["Read", "Write", "Edit", "Glob", "Grep", "Bash"];
 
 export interface QueryOptions {
   model: string;
@@ -55,14 +52,14 @@ export interface QueryOptions {
  */
 export function createQueryOptions(
   projectDir: string,
-  model: string
+  model: string,
 ): QueryOptions {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    throw new Error(
-      "ANTHROPIC_API_KEY environment variable not set.\n" +
-        "Get your API key from: https://console.anthropic.com/"
-    );
-  }
+  // if (!process.env.ANTHROPIC_API_KEY) {
+  //   throw new Error(
+  //     "ANTHROPIC_API_KEY environment variable not set.\n" +
+  //       "Get your API key from: https://console.anthropic.com/"
+  //   );
+  // }
 
   // Create comprehensive security settings
   const securitySettings = {
