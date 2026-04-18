@@ -13,15 +13,28 @@ import type {
 } from "@anthropic-ai/claude-agent-sdk";
 import { bashSecurityHook } from "./security.js";
 
-// Puppeteer MCP tools for browser automation
-const PUPPETEER_TOOLS = [
-  "mcp__puppeteer__puppeteer_navigate",
-  "mcp__puppeteer__puppeteer_screenshot",
-  "mcp__puppeteer__puppeteer_click",
-  "mcp__puppeteer__puppeteer_fill",
-  "mcp__puppeteer__puppeteer_select",
-  "mcp__puppeteer__puppeteer_hover",
-  "mcp__puppeteer__puppeteer_evaluate",
+// Playwright MCP tools for browser automation
+const PLAYWRIGHT_TOOLS = [
+  "mcp__playwright__browser_navigate",
+  "mcp__playwright__browser_navigate_back",
+  "mcp__playwright__browser_snapshot",
+  "mcp__playwright__browser_take_screenshot",
+  "mcp__playwright__browser_click",
+  "mcp__playwright__browser_fill_form",
+  "mcp__playwright__browser_select_option",
+  "mcp__playwright__browser_hover",
+  "mcp__playwright__browser_type",
+  "mcp__playwright__browser_press_key",
+  "mcp__playwright__browser_evaluate",
+  "mcp__playwright__browser_console_messages",
+  "mcp__playwright__browser_tabs",
+  "mcp__playwright__browser_close",
+  "mcp__playwright__browser_wait_for",
+  "mcp__playwright__browser_file_upload",
+  "mcp__playwright__browser_handle_dialog",
+  "mcp__playwright__browser_drag",
+  "mcp__playwright__browser_resize",
+  "mcp__playwright__browser_network_requests",
 ];
 
 // Built-in tools
@@ -73,7 +86,7 @@ export function createQueryOptions(
         "Glob(./**)",
         "Grep(./**)",
         "Bash(*)",
-        ...PUPPETEER_TOOLS,
+        ...PLAYWRIGHT_TOOLS,
       ],
     },
   };
@@ -89,16 +102,16 @@ export function createQueryOptions(
   console.log("   - Sandbox enabled (OS-level bash isolation)");
   console.log(`   - Filesystem restricted to: ${resolve(projectDir)}`);
   console.log("   - Bash commands restricted to allowlist (see security.ts)");
-  console.log("   - MCP servers: puppeteer (browser automation)");
+  console.log("   - MCP servers: playwright (browser automation)");
   console.log();
 
   return {
     model,
     systemPrompt:
       "You are an expert full-stack developer building a production-quality web application.",
-    allowedTools: [...BUILTIN_TOOLS, ...PUPPETEER_TOOLS],
+    allowedTools: [...BUILTIN_TOOLS, ...PLAYWRIGHT_TOOLS],
     mcpServers: {
-      puppeteer: { command: "npx", args: ["puppeteer-mcp-server"] },
+      playwright: { command: "npx", args: ["@playwright/mcp@latest"] },
     },
     hooks: {
       PreToolUse: [{ matcher: "Bash", hooks: [bashSecurityHook] }],

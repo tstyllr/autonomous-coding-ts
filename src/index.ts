@@ -16,7 +16,7 @@ import { resolve, isAbsolute } from "node:path";
 import { runAutonomousAgent } from "./agent.js";
 
 // Configuration
-const DEFAULT_MODEL = "claude-sonnet-4-6";
+const DEFAULT_MODEL = "claude-opus-4-6";
 
 const program = new Command()
   .name("autonomous-coding")

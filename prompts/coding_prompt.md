@@ -178,14 +178,20 @@ Before context fills up:
 
 Available tools:
 
-- puppeteer_navigate - Start browser and go to URL
-- puppeteer_screenshot - Capture screenshot
-- puppeteer_click - Click elements
-- puppeteer_fill - Fill form inputs
-- puppeteer_evaluate - Execute JavaScript (use sparingly, only for debugging)
+- browser_navigate - Navigate to a URL
+- browser_snapshot - Capture accessibility snapshot of the page
+- browser_take_screenshot - Take a screenshot of the page
+- browser_click - Click elements
+- browser_fill_form - Fill form inputs
+- browser_select_option - Select dropdown options
+- browser_hover - Hover over elements
+- browser_type - Type text
+- browser_press_key - Press keyboard keys
+- browser_evaluate - Execute JavaScript (use sparingly, only for debugging)
+- browser_console_messages - Get browser console messages
+- browser_wait_for - Wait for elements or conditions
 
 Test like a human user with mouse and keyboard. Don't take shortcuts by using JavaScript evaluation.
-Don't use the puppeteer "active tab" tool.
 
 ---
 
