@@ -6,7 +6,7 @@ A TypeScript-based autonomous agent harness that demonstrates long-running, mult
 
 The system uses a **two-phase session pattern**:
 
-1. **Initializer Session** (first run) — Reads the app specification (`app_spec.txt`), generates 200+ feature test cases in `feature_list.json`, creates `init.sh` setup script, and initializes the project with git.
+1. **Initializer Session** (first run) — Reads the app specification (`app_spec.txt`), generates 68+ feature test cases in `feature_list.json`, creates `init.sh` setup script, and initializes the project with git.
 
 2. **Coding Sessions** (subsequent runs) — Each session orients itself via git history and feature list, runs verification tests on passing features to prevent regressions, picks the highest-priority failing feature, implements it, verifies via browser automation (Puppeteer MCP), and commits progress.
 
@@ -63,11 +63,11 @@ npm start -- --project-dir ./my_project --model claude-opus-4-1-20250805
 
 ### CLI Options
 
-| Option | Description | Default |
-|---|---|---|
-| `--project-dir <path>` | Project directory (relative paths go under `generations/`) | `./autonomous_demo_project` |
-| `--max-iterations <n>` | Maximum number of sessions to run | Unlimited |
-| `--model <model>` | Claude model to use | `claude-sonnet-4-5-20250929` |
+| Option                 | Description                                                | Default                      |
+| ---------------------- | ---------------------------------------------------------- | ---------------------------- |
+| `--project-dir <path>` | Project directory (relative paths go under `generations/`) | `./autonomous_demo_project`  |
+| `--max-iterations <n>` | Maximum number of sessions to run                          | Unlimited                    |
+| `--model <model>`      | Claude model to use                                        | `claude-sonnet-4-5-20250929` |
 
 ### Development
 
@@ -82,7 +82,7 @@ npm test
 ## Key Features
 
 - **Multi-session continuity** — State persisted via git, `feature_list.json`, and progress notes
-- **Feature-driven development** — 200+ auto-generated test cases drive implementation
+- **Feature-driven development** — 68+ auto-generated test cases drive implementation
 - **Regression prevention** — Previously passing features are verified each session
 - **Browser automation** — Puppeteer MCP for real UI verification
 - **Streaming output** — Real-time visibility into agent reasoning and tool use
@@ -94,7 +94,7 @@ The demo builds a full-stack claude.ai chat interface clone:
 
 - **Frontend:** React + Vite + Tailwind CSS
 - **Backend:** Node.js + Express + SQLite
-- **200+ features** including chat UI, artifact rendering, conversation management, projects, model selection, settings, and more
+- **68+ features** including chat UI, artifact rendering, conversation management, projects, model selection, settings, and more
 
 ## License
 

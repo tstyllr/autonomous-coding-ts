@@ -18,8 +18,7 @@ import {
 // Configuration
 const AUTO_CONTINUE_DELAY_SECONDS = 3;
 
-const sleep = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
  * Run a single agent session using Claude Agent SDK.
@@ -30,7 +29,7 @@ const sleep = (ms: number) =>
  */
 async function runAgentSession(
   options: ReturnType<typeof createQueryOptions>,
-  message: string
+  message: string,
 ): Promise<[string, string]> {
   console.log("Sending prompt to Claude Agent SDK...\n");
 
@@ -65,10 +64,9 @@ async function runAgentSession(
               block.type === "tool_result"
             ) {
               const resultContent = String(
-                "content" in block ? block.content : ""
+                "content" in block ? block.content : "",
               );
-              const isError =
-                "is_error" in block ? block.is_error : false;
+              const isError = "is_error" in block ? block.is_error : false;
 
               // Check if command was blocked by security hook
               if (resultContent.toLowerCase().includes("blocked")) {
@@ -87,10 +85,9 @@ async function runAgentSession(
       } else if (msg.type === "result") {
         // Final result message
         if (msg.subtype !== "success") {
-          const errors =
-            "errors" in msg ? (msg.errors as string[]) : [];
+          const errors = "errors" in msg ? (msg.errors as string[]) : [];
           console.log(
-            `\nSession ended with: ${msg.subtype}${errors.length ? ` - ${errors.join(", ")}` : ""}`
+            `\nSession ended with: ${msg.subtype}${errors.length ? ` - ${errors.join(", ")}` : ""}`,
           );
         }
       }
@@ -110,7 +107,7 @@ async function runAgentSession(
 export async function runAutonomousAgent(
   projectDir: string,
   model: string,
-  maxIterations?: number
+  maxIterations?: number,
 ): Promise<void> {
   console.log("\n" + "=".repeat(70));
   console.log("  AUTONOMOUS CODING AGENT DEMO");
@@ -137,11 +134,9 @@ export async function runAutonomousAgent(
     console.log();
     console.log("=".repeat(70));
     console.log("  NOTE: First session takes 10-20+ minutes!");
+    console.log("  The agent is generating 68 detailed test cases.");
     console.log(
-      "  The agent is generating 200 detailed test cases."
-    );
-    console.log(
-      "  This may appear to hang - it's working. Watch for [Tool: ...] output."
+      "  This may appear to hang - it's working. Watch for [Tool: ...] output.",
     );
     console.log("=".repeat(70));
     console.log();
@@ -161,9 +156,7 @@ export async function runAutonomousAgent(
     // Check max iterations
     if (maxIterations && iteration > maxIterations) {
       console.log(`\nReached max iterations (${maxIterations})`);
-      console.log(
-        "To continue, run the script again without --max-iterations"
-      );
+      console.log("To continue, run the script again without --max-iterations");
       break;
     }
 
@@ -188,7 +181,7 @@ export async function runAutonomousAgent(
     // Handle status
     if (status === "continue") {
       console.log(
-        `\nAgent will auto-continue in ${AUTO_CONTINUE_DELAY_SECONDS}s...`
+        `\nAgent will auto-continue in ${AUTO_CONTINUE_DELAY_SECONDS}s...`,
       );
       printProgressSummary(projectDir);
       await sleep(AUTO_CONTINUE_DELAY_SECONDS * 1000);
@@ -221,7 +214,7 @@ export async function runAutonomousAgent(
   console.log("  # Or manually:");
   console.log("  npm install && npm run dev");
   console.log(
-    "\n  Then open http://localhost:3000 (or check init.sh for the URL)"
+    "\n  Then open http://localhost:3000 (or check init.sh for the URL)",
   );
   console.log("-".repeat(70));
 
