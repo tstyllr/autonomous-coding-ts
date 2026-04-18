@@ -1,0 +1,23 @@
+{
+  "name": "autonomous-coding-ts",
+  "version": "1.0.0",
+  "description": "Autonomous Coding Agent Demo - TypeScript port using Claude Agent SDK",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.1.0",
+    "commander": "^13.0.0",
+    "shell-quote": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/shell-quote": "^1.7.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
