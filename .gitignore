@@ -9,3 +9,6 @@ generations/
 
 # Log files
 logs/
+
+# macOS
+.DS_Store
