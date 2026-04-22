@@ -37,7 +37,7 @@ Defense-in-depth with three layers:
 ### Prerequisites
 
 - Node.js 22+
-- An Anthropic API key
+- Claude Code (already logged in) **or** an Anthropic API key
 
 ### Installation
 
@@ -48,7 +48,8 @@ npm install
 ### Usage
 
 ```bash
-# Set your API key
+# If you have Claude Code installed and logged in, no API key is needed.
+# Otherwise, set your API key:
 export ANTHROPIC_API_KEY=your_key_here
 
 # Run with default settings
